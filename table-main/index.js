@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   }
   const scrollToEmployee = () => {
     const hash = location.hash.substring(1);
-    const accordionAnchor = document.querySelector(`.accordion-content[id="${hash}"]`);
+    const accordionAnchor = document.querySelector(`.accordion-content[data-employee="${hash}"]`);
 
     if (!accordionAnchor) {
       return;
