@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../table-main/styles.css">
+</head>
+
+<body>
+  <main class="main main-full-table">
+    <section class="header-row block">
+      <div class="header-row__title">
+        <p class="header-row__title-text">Мотивация</p>
+        <div class="search">
+          <input class="search-input" type="text" placeholder="Фильтр + поиск">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z" stroke="#9C9AA5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M17.498 17.5L13.873 13.875" stroke="#9C9AA5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="header-row__buttons">
+        <a class="header-row__button active">Отчет по бонусам</a>
+        <a class="header-row__button">Проектные KPI</a>
+        <a class="header-row__button">Функциональные KPI</a>
+        <a class="header-row__button">KPI сотрудника</a>
+        <a class="header-row__button">Матрица ответственных</a>
+        <a class="header-row__button">Отчет по количеству вех</a>
+        <a class="header-row__button">Отчет о пересогласованиях графиков</a>
+        <div class="header-row__select">
+          <div class="header-row__select-current selected" data-active="Отчет по бонусам" data-default="Другое">
+            <svg width="7" height="5" viewBox="0 0 7 5" fill="#none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.0267169 0.72453C0.0531937 0.658084 0.0980407 0.601287 0.155587 0.561321C0.213134 0.521355 0.280795 0.500015 0.350015 0.5L6.64974 0.5C6.719 0.499943 6.78672 0.521238 6.84432 0.561188C6.90193 0.601138 6.94683 0.657947 6.97334 0.724423C6.99986 0.7909 7.00679 0.864054 6.99326 0.934626C6.97973 1.0052 6.94636 1.07001 6.89735 1.12086L3.74749 4.39336C3.71499 4.42717 3.67639 4.45398 3.6339 4.47228C3.59141 4.49058 3.54587 4.5 3.49988 4.5C3.45388 4.5 3.40834 4.49058 3.36585 4.47228C3.32337 4.45398 3.28477 4.42717 3.25226 4.39336L0.102401 1.12087C0.0534708 1.06999 0.0201632 1.00517 0.00669114 0.934625C-0.00678094 0.864077 0.000188503 0.790963 0.0267169 0.72453Z" fill="#090714"></path>
+            </svg>
+          </div>
+          <div class="header-row__select-container">
+            <div class="header-row__select-options">
+              <a class="header-row__button">Отчет по бонусам</a>
+              <a class="header-row__button">Проектные KPI</a>
+              <a class="header-row__button">Функциональные KPI</a>
+              <a class="header-row__button">KPI сотрудника</a>
+              <a class="header-row__button">Матрица ответственных</a>
+              <a class="header-row__button">Отчет по количеству вех</a>
+              <a class="header-row__button">Отчет о пересогласованиях графиков</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-row__actions">
+        <button class="export-button manager">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M16.9906 13.0625H20.9594V11.4174H16.9906V13.0625ZM16.9875 18.7365H20.9594V17.0693H16.9875V18.7365ZM16.9844 15.9232H20.9594V14.2592H16.9844V15.9232ZM16.9875 10.1955H20.9594V8.53467H16.9875V10.1955ZM16.9906 7.30641H20.9563V5.63926H16.9906V7.30641ZM22.5156 20.5362C19.7375 20.5362 16.9625 20.5362 14.1844 20.5362C13.9938 20.5362 13.9938 20.5362 13.9938 20.3373C13.9938 19.8542 14 19.3743 13.9938 18.8912C13.9906 18.7712 14.0281 18.7428 14.1406 18.7428C14.6375 18.7491 15.1312 18.746 15.625 18.7491C15.7281 18.7491 15.7625 18.7207 15.7625 18.6133C15.7562 18.1397 15.7594 17.6661 15.7594 17.1925C15.7594 17.1546 15.7531 17.1167 15.75 17.0599H15.5875C15.1062 17.0599 14.625 17.0567 14.1438 17.063C14.0281 17.063 13.9906 17.0314 13.9938 16.9146C14 16.6368 14 16.3557 13.9938 16.0779C13.9875 15.9579 14.0312 15.9295 14.1438 15.9326C14.6375 15.9358 15.1313 15.9295 15.6281 15.9358C15.7312 15.9358 15.7625 15.9042 15.7625 15.8C15.7562 15.3264 15.7562 14.8528 15.7594 14.3792C15.7625 14.2813 15.7312 14.2497 15.6344 14.2529C15.1344 14.256 14.6344 14.2497 14.1344 14.256C14.0281 14.256 13.9906 14.2276 13.9938 14.1171C14 13.814 14 13.514 13.9938 13.2141C13.9906 13.0972 14.0344 13.072 14.1375 13.072C14.625 13.0783 15.1094 13.0751 15.5969 13.0751H15.7469C15.7531 13.0246 15.7594 12.9867 15.7594 12.9488C15.7594 12.4784 15.7562 12.0111 15.7625 11.5406C15.7625 11.4269 15.725 11.3985 15.6188 11.4017C15.1281 11.4048 14.6375 11.3985 14.1469 11.4048C14.025 11.408 13.9906 11.3669 13.9938 11.2469C14 10.9407 14 10.6375 13.9938 10.3313C13.9906 10.2334 14.0219 10.2018 14.1219 10.2018C14.6125 10.2081 15.1031 10.205 15.5938 10.205H15.75C15.7531 10.1545 15.7594 10.1134 15.7594 10.0692C15.7594 9.60189 15.7562 9.13143 15.7625 8.66412C15.7625 8.55045 15.725 8.52204 15.6188 8.52204C15.125 8.52835 14.6281 8.52204 14.1344 8.52519C14.025 8.52835 13.9906 8.49678 13.9938 8.38626C14 8.07683 14 7.76424 13.9938 7.45481C13.9906 7.34745 14.025 7.30956 14.1344 7.31272C14.6156 7.31588 15.0969 7.31272 15.5781 7.31272H15.7469C15.75 7.26536 15.7594 7.22747 15.7594 7.18958C15.7594 6.7128 15.7562 6.23286 15.7625 5.75608C15.7625 5.64557 15.7219 5.62347 15.625 5.62663C15.125 5.62979 14.625 5.62347 14.125 5.62979C14.0219 5.62979 13.9906 5.59821 13.9938 5.49401C13.9969 5.00145 13.9969 4.51204 13.9938 4.01947C13.9938 3.91843 14.0188 3.8837 14.125 3.8837C16.9406 3.88686 19.7563 3.88686 22.575 3.88686C22.6094 3.88686 22.6438 3.89001 22.6875 3.89317C22.6906 3.95948 22.6969 4.01947 22.6969 4.08262C22.6969 9.50717 22.6969 14.9317 22.6969 20.3563C22.6969 20.5362 22.6969 20.5362 22.5156 20.5362ZM9.86563 16.561C9.2875 16.4947 8.70938 16.4252 8.12813 16.3652C8.025 16.3557 7.97188 16.3147 7.92812 16.2137C7.49062 15.1938 7.04375 14.1739 6.60313 13.1509C6.59063 13.1288 6.58125 13.1035 6.55938 13.0625C6.54062 13.1067 6.525 13.132 6.5125 13.1604C6.13125 14.0918 5.75 15.0264 5.36562 15.9547C5.35 15.9926 5.29063 16.0368 5.25625 16.0337C4.6625 15.9705 4.07188 15.9011 3.48125 15.8348C3.475 15.8348 3.46875 15.8253 3.45 15.8095C3.54375 15.6295 3.63438 15.4464 3.72812 15.2633C4.31562 14.1171 4.9 12.9678 5.49062 11.8216C5.53125 11.7458 5.525 11.6858 5.4875 11.6132C4.85313 10.3123 4.22188 9.01145 3.5875 7.70741C3.56875 7.66636 3.55 7.62216 3.51875 7.55585C3.65312 7.54638 3.7625 7.54006 3.87188 7.53375C4.35313 7.51796 4.83438 7.50217 5.3125 7.48007C5.40312 7.47691 5.4375 7.5148 5.46875 7.58742C5.85 8.50625 6.23438 9.42192 6.61562 10.3376C6.63125 10.3723 6.64688 10.4071 6.66875 10.4607C6.7875 10.145 6.89062 9.84502 7.00625 9.55138C7.28437 8.86304 7.56562 8.17787 7.85 7.4927C7.86875 7.44534 7.93125 7.3885 7.975 7.3885C8.65312 7.35061 9.33125 7.32219 10.0094 7.29062C10.0312 7.29062 10.0562 7.29694 10.1 7.30325C10.0719 7.36008 10.0562 7.40113 10.0312 7.44218C9.28438 8.83778 8.5375 10.2365 7.78438 11.629C7.7375 11.7206 7.74375 11.7837 7.7875 11.8721C8.58125 13.394 9.36875 14.9191 10.1594 16.4442C10.1812 16.4884 10.2031 16.5357 10.2344 16.6083C10.0938 16.5894 9.98125 16.5736 9.86563 16.561ZM23.8062 2.54177C20.5906 2.54177 17.3781 2.53861 14.1625 2.54493C14.0312 2.54493 13.9906 2.51335 13.9906 2.37442C14 1.63557 13.9969 0.896724 13.9969 0.157874V0.00947263C13.9656 0.00315808 13.9562 0 13.9469 0C12.0031 0.341008 10.0594 0.685174 8.1125 1.02302C5.4625 1.48717 2.80938 1.94817 0.15625 2.40916C0.040625 2.4281 0 2.46599 0 2.59229C0.003125 8.86304 0.003125 15.1338 0 21.4014C0 21.534 0.040625 21.5751 0.1625 21.594C0.70625 21.6824 1.25 21.7803 1.79375 21.875C3.79062 22.2223 5.7875 22.5728 7.78438 22.9201C9.59688 23.239 11.4062 23.5548 13.2188 23.8705C13.4719 23.9147 13.725 23.9558 13.9969 24V21.9666C13.9969 21.935 13.9969 21.9066 13.9938 21.875C13.9875 21.7961 14.0188 21.7582 14.1 21.7645C14.1438 21.7645 14.1875 21.7645 14.2312 21.7645C17.425 21.7645 20.6156 21.7645 23.8094 21.7613C23.8719 21.7613 23.9344 21.7582 24 21.755V2.54177H23.8062Z"
+              fill="#17823A" />
+          </svg>
+        </button>
+        <button class="search-mobile">
+           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z" stroke="#9C9AA5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M17.498 17.5L13.873 13.875" stroke="#9C9AA5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+    <section class="first-block block">
+      <div class="first-block__container">
+        <p class="first-block__title">Пример расчета премии:</p>
+        <div class="first-block__content first">
+          <div class="first-block__content-cell">
+            <div class="first-block__content-cell-content">1,20</div>
+            <span class="first-block__description">Коэффициэнт</span>
+          </div>
+          <svg class="first-block__content-multiplier" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M9.57455 9.17625C9.60218 9.202 9.62434 9.23305 9.63971 9.26755C9.65509 9.30205 9.66335 9.33929 9.66402 9.37705C9.66468 9.41482 9.65774 9.45233 9.64359 9.48735C9.62945 9.52237 9.60839 9.55418 9.58169 9.58089C9.55498 9.6076 9.52317 9.62865 9.48815 9.6428C9.45312 9.65694 9.41561 9.66389 9.37785 9.66322C9.34009 9.66255 9.30284 9.65429 9.26834 9.63892C9.23384 9.62355 9.20279 9.60138 9.17705 9.57375L6.0008 6.39797L2.82455 9.57375C2.77123 9.62343 2.70071 9.65048 2.62785 9.64919C2.55499 9.6479 2.48547 9.61839 2.43394 9.56686C2.38241 9.51533 2.35289 9.44581 2.35161 9.37295C2.35032 9.30008 2.37737 9.22956 2.42705 9.17625L5.60283 6L2.42705 2.82375C2.37737 2.77043 2.35032 2.69992 2.35161 2.62705C2.35289 2.55419 2.38241 2.48467 2.43394 2.43314C2.48547 2.38161 2.55499 2.35209 2.62785 2.35081C2.70071 2.34952 2.77123 2.37657 2.82455 2.42625L6.0008 5.60203L9.17705 2.42625C9.23036 2.37657 9.30088 2.34952 9.37374 2.35081C9.44661 2.35209 9.51612 2.38161 9.56765 2.43314C9.61918 2.48467 9.6487 2.55419 9.64999 2.62705C9.65127 2.69992 9.62423 2.77043 9.57455 2.82375L6.39877 6L9.57455 9.17625Z" fill="#343330"></path>
+          </svg>
+          <div class="first-block__content-cell">
+            <div class="first-block__content-cell-content">50 000 ₽</div>
+            <span class="first-block__description">Сумма оклада, ₽</span>
+          </div>
+          <svg class="first-block__content-multiplier" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M9.57455 9.17625C9.60218 9.202 9.62434 9.23305 9.63971 9.26755C9.65509 9.30205 9.66335 9.33929 9.66402 9.37705C9.66468 9.41482 9.65774 9.45233 9.64359 9.48735C9.62945 9.52237 9.60839 9.55418 9.58169 9.58089C9.55498 9.6076 9.52317 9.62865 9.48815 9.6428C9.45312 9.65694 9.41561 9.66389 9.37785 9.66322C9.34009 9.66255 9.30284 9.65429 9.26834 9.63892C9.23384 9.62355 9.20279 9.60138 9.17705 9.57375L6.0008 6.39797L2.82455 9.57375C2.77123 9.62343 2.70071 9.65048 2.62785 9.64919C2.55499 9.6479 2.48547 9.61839 2.43394 9.56686C2.38241 9.51533 2.35289 9.44581 2.35161 9.37295C2.35032 9.30008 2.37737 9.22956 2.42705 9.17625L5.60283 6L2.42705 2.82375C2.37737 2.77043 2.35032 2.69992 2.35161 2.62705C2.35289 2.55419 2.38241 2.48467 2.43394 2.43314C2.48547 2.38161 2.55499 2.35209 2.62785 2.35081C2.70071 2.34952 2.77123 2.37657 2.82455 2.42625L6.0008 5.60203L9.17705 2.42625C9.23036 2.37657 9.30088 2.34952 9.37374 2.35081C9.44661 2.35209 9.51612 2.38161 9.56765 2.43314C9.61918 2.48467 9.6487 2.55419 9.64999 2.62705C9.65127 2.69992 9.62423 2.77043 9.57455 2.82375L6.39877 6L9.57455 9.17625Z" fill="#343330"></path>
+          </svg>
+          <div class="first-block__content-cell">
+            <div class="first-block__content-cell-content">2</div>
+            <span class="first-block__description">Количество окладов</span>
+          </div>
+          <svg class="first-block__content-equals" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13.875 10C13.875 10.0995 13.8355 10.1948 13.7652 10.2652C13.6948 10.3355 13.5995 10.375 13.5 10.375H2.5C2.40054 10.375 2.30516 10.3355 2.23483 10.2652C2.16451 10.1948 2.125 10.0995 2.125 10C2.125 9.90054 2.16451 9.80516 2.23483 9.73483C2.30516 9.66451 2.40054 9.625 2.5 9.625H13.5C13.5995 9.625 13.6948 9.66451 13.7652 9.73483C13.8355 9.80516 13.875 9.90054 13.875 10ZM2.5 6.375H13.5C13.5995 6.375 13.6948 6.33549 13.7652 6.26516C13.8355 6.19484 13.875 6.09946 13.875 6C13.875 5.90054 13.8355 5.80516 13.7652 5.73484C13.6948 5.66451 13.5995 5.625 13.5 5.625H2.5C2.40054 5.625 2.30516 5.66451 2.23483 5.73484C2.16451 5.80516 2.125 5.90054 2.125 6C2.125 6.09946 2.16451 6.19484 2.23483 6.26516C2.30516 6.33549 2.40054 6.375 2.5 6.375Z" fill="#343330"></path>
+          </svg>
+          <div class="first-block__content-cell">
+            <output class="first-block__content-cell-content output">240 000</output>
+            <span class="first-block__description">Итоговая пермия, ₽</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="second-block block">
+      <div class="grid-container grid-kpi">
+       <div class="grid-header">
+          <div class="grid-header__cell first grid-border">
+            <p class="grid-header__cell-text">Сотрудники</p>
+          </div>
+          <div class="grid-header__cell kpi-cell">
+            <div class="grid-header__cell grid-border kpi-cell current-employee-kpi">
+              <p class="grid-header__cell-text">2 кв. 2025</p>
+            </div>
+            <div class="grid-header__cell kpi-cell">
+              <div class="grid-header__cell grid-border kpi-cell">
+                <p class="grid-header__cell-text"></p>
+              </div>
+              <div class="grid-header__cell grid-border kpi-cell">
+                <p class="grid-header__cell-text"></p>
+              </div>
+              <div class="grid-header__cell grid-border kpi-cell">
+                <p class="grid-header__cell-text"></p>
+              </div>
+              <div class="grid-header__cell grid-border kpi-cell">
+                <p class="grid-header__cell-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">
+            <div class="accordion-title grid-border">
+              <p class="accordion-header__title">Администрация</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="#090714" stroke-width="1.3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="accordion-cell grid-border kpi-cell">
+              <p class="accordion-cell-text"></p>
+            </div>
+            <div class="accordion-cell grid-border kpi-cell">
+              <p class="accordion-cell-text"></p>
+            </div>
+            <div class="accordion-cell grid-border kpi-cell">
+              <p class="accordion-cell-text"></p>
+            </div>
+            <div class="accordion-cell grid-border kpi-cell kpi-last">
+              <p class="accordion-cell-text"></p>
+            </div>
+          </div>
+          <div class="accordion-content" id="vinogradova">
+            <ol class="accordion-content__sub">
+              <div class="accordion-content__row employee-kpi">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Виноградова Екатерина Михайловна</p>
+                  <p class="accordion-content__title_desc">Ведущий специалист</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell employee-kpi">
+                  <p class="accordion-cell-text">Итоговый коэффициент: 1</p>
+                </div>
+              </div>
+              <div class="accordion-content__row small sub">
+                <div class="accordion-title grid-border">
+                  <p class="accordion-header__title">Вехи (Проектные KPI)</p>
+                  <p class="accordion-header__num">50%</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">% завершения</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Окончательный план</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Окончание факт</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Коэф. выполнения</p>
+                </div>
+              </div>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">One</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+              </li>
+              <li class="accordion-content__row inner-level">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Высокополигональная модель согласована у МЭРа</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">100</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">—</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">22.04.2025</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+              </li>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">One</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+              </li>
+              <li class="accordion-content__row inner-level">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Высокополигональная модель согласована у МЭРа</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">100</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">—</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">22.04.2025</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+              </li>
+              <div class="accordion-content__row small">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell employee-kpi">
+                  <p class="accordion-cell-text">Средний коэффициент: 1</p>
+                </div>
+              </div>
+            </ol>
+            <ol class="accordion-content__sub">
+              <div class="accordion-content__row small sub">
+                <div class="accordion-title grid-border">
+                  <p class="accordion-header__title">Функциональный KPI</p>
+                  <p class="accordion-header__num">50%</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Вес функционала</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Коэф. выполнения</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Итоговый коэффициент</p>
+                </div>
+              </div>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Разработка Дорожной карты по формированию пакета ИРД по новому проекту</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+              </li>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Сокращение времени исправления замечаний и ошибок в ИРД</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+              </li>
+              <div class="accordion-content__row small">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell employee-kpi employee-end">
+                  <p class="accordion-cell-text">Средний коэффициент: 1</p>
+                </div>
+              </div>
+              <hr class="accordion-content__separator">
+            </ol>
+          </div>
+          <div class="accordion-content" id="petrov">
+            <ol class="accordion-content__sub">
+              <div class="accordion-content__row employee-kpi">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Петров Петр Иванович</p>
+                  <p class="accordion-content__title_desc">Заместитель директора дирекции</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell employee-kpi">
+                  <p class="accordion-cell-text">Итоговый коэффициент: 1</p>
+                </div>
+              </div>
+              <div class="accordion-content__row small sub">
+                <div class="accordion-title grid-border">
+                  <p class="accordion-header__title">Вехи (Проектные KPI)</p>
+                  <p class="accordion-header__num">50%</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">% завершения</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Окончательный план</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Окончание факт</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Коэф. выполнения</p>
+                </div>
+              </div>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">One</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+              </li>
+              <li class="accordion-content__row inner-level">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Высокополигональная модель согласована у МЭРа</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">100</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">—</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">22.04.2025</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+              </li>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">One</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text"></p>
+                </div>
+              </li>
+              <li class="accordion-content__row inner-level">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Высокополигональная модель согласована у МЭРа</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">100</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">—</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">22.04.2025</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+              </li>
+              <div class="accordion-content__row small">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell employee-kpi">
+                  <p class="accordion-cell-text">Средний коэффициент: 1</p>
+                </div>
+              </div>
+            </ol>
+            <ol class="accordion-content__sub">
+              <div class="accordion-content__row small sub">
+                <div class="accordion-title grid-border">
+                  <p class="accordion-header__title">Функциональный KPI</p>
+                  <p class="accordion-header__num">50%</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Вес функционала</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Коэф. выполнения</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">Итоговый коэффициент</p>
+                </div>
+              </div>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Разработка Дорожной карты по формированию пакета ИРД по новому проекту</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+              </li>
+              <li class="accordion-content__row">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main">Сокращение времени исправления замечаний и ошибок в ИРД</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">1</p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell">
+                  <p class="accordion-cell-text">0,5</p>
+                </div>
+              </li>
+              <div class="accordion-content__row small">
+                <div class="accordion-content__title grid-border">
+                  <p class="accordion-content__title_main"></p>
+                </div>
+                <div class="accordion-cell grid-border kpi-cell employee-kpi employee-end">
+                  <p class="accordion-cell-text">Средний коэффициент: 1</p>
+                </div>
+              </div>
+              <hr class="accordion-content__separator">
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="only-landscape">
+        <svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 58 58" fill="none">
+          <path d="M39.8269 6.09C47.7294 9.83583 53.3844 17.4967 54.2544 26.5833H57.8794C56.6469 11.6967 44.2011 0 29.0003 0L27.4053 0.0725L36.6128 9.28L39.8269 6.09ZM24.7228 4.22917C24.3878 3.89013 23.989 3.62095 23.5492 3.43724C23.1095 3.25352 22.6377 3.15892 22.1611 3.15892C21.6845 3.15892 21.2127 3.25352 20.773 3.43724C20.3332 3.62095 19.9343 3.89013 19.5994 4.22917L4.22943 19.5992C3.89039 19.9341 3.62121 20.333 3.4375 20.7727C3.25378 21.2124 3.15918 21.6843 3.15918 22.1608C3.15918 22.6374 3.25378 23.1092 3.4375 23.549C3.62121 23.9887 3.89039 24.3876 4.22943 24.7225L33.2778 53.7708C34.7036 55.1967 36.9994 55.1967 38.4011 53.7708L53.7711 38.4008C55.1969 36.975 55.1969 34.6792 53.7711 33.2775L24.7228 4.22917ZM35.8394 51.2092L6.79109 22.1608L22.1611 6.79083L51.2094 35.8392L35.8394 51.2092ZM18.1736 51.91C14.199 50.0372 10.7795 47.1636 8.25022 43.5709C5.72095 39.9783 4.16884 35.79 3.74609 31.4167H0.121094C1.35359 46.3033 13.7994 58 29.0003 58L30.5953 57.9275L21.3878 48.72L18.1736 51.91Z" fill="#9C9AA5"/>
+        </svg>
+        <p>Пожалуйста, приведите ваш смартфон <br> в горизонтальное положение,<br> чтобы посмотреть таблицу</p>
+      </div>
+    </section>
+  </main>
+  <script src="../table-main/index.js"></script>
+</body>
+<style>
+.first-block__coef {
+  display: flex;
+  gap: 8px;
+  align-self: flex-start;
+  svg {
+    min-width: 18px;
+  }
+}
+.first-block__coef-text {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.first-block__coef-text-title {
+  font-family: Suisse Intl;
+  font-weight: 500;
+  font-size: 16px;
+  color: #090714;
+}
+
+.first-block__coef-text-desc {
+  font-family: Suisse Intl;
+  font-weight: 400;
+  font-size: 16px;
+  color: #9C9AA5;
+  line-height: 149%;
+}
+</style>
+</html>
