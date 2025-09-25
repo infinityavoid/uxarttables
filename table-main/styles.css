@@ -285,7 +285,7 @@ button {
 }
 
 .grid-container {
-  width: 100%;
+  width: calc(100% + 12px);
   overflow: auto;
   height: 100%;
   padding-bottom: 10px;
