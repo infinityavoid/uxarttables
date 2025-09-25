@@ -644,6 +644,8 @@ li.accordion-content__row.inner-level .accordion-content__title_main::before {
   text-decoration: none;
   justify-content: center;
   background-color: white;
+  text-wrap: balance;
+  padding-right: 16px;
 }
 
 a.accordion-content__title:hover, a.accordion-content__title:active {
@@ -762,7 +764,7 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
   border-radius: 6px;
   transition: 0.35s;
   position: relative;
-  z-index: 102;
+  z-index: 1205;
   display: none;
 }
 
@@ -808,10 +810,10 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
 }
 
 .header-row__select-current:hover {
-  background-color: #754BE9;
-  color: white;
+  background-color: #754BE9 !important;
+  color: white !important;
   path {
-    fill: white;
+    fill: white !important;
   }
 }
 
@@ -856,6 +858,7 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
   border-radius: 6px;
   color: white
 }
+
 .header-row__actions {
   display: flex;
   align-items: center;
@@ -996,43 +999,9 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
     display: flex;
     order: 1;
   }
-  /*
-  .header-row__buttons > a:nth-child(n+6) {
-    display: none;
-  }
-  .header-row__select a:nth-child(-n+5) {
-    display: none;
-  }
-  .header-row__select {
-    display: none;
-  }*/
 }
 
-@media (max-width: 2149px) {
-  /*.header-row__buttons > a:nth-child(n+5) {
-    display: none;
-  }
 
-  .header-row__select a:nth-child(-n+4) {
-    display: none;
-  }
-  .header-row__select a:nth-child(5) {
-    display: flex;
-  }*/
-}
-
-@media (max-width: 1950px){
-  /*.header-row__buttons > a:nth-child(n+4) {
-    display: none;
-  }
-
-  .header-row__select a:nth-child(-n+3) {
-    display: none;
-  }
-  .header-row__select a:nth-child(4) {
-    display: flex;
-  }*/
-}
 
 @media (max-width: 1919px) {
   .main {
@@ -1065,17 +1034,6 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
     min-width: 772px;
     gap: 8px;
   }
-  /*
-  .header-row__buttons > a:nth-child(n+3) {
-    display: none;
-  }
-
-  .header-row__select a:nth-child(-n+2) {
-    display: none;
-  }
-  .header-row__select a:nth-child(3) {
-    display: flex;
-  }*/
   .header-row__select {
     display: flex;
   }
@@ -1085,7 +1043,20 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
   .header-row__select a:nth-child(-n+4) {
     display: none;
   }
-
+  .header-row__button:nth-child(-n+4).active ~ .header-row__select .header-row__select-current {
+    background-color: #F5F5F5;
+    color: #090714;
+    path {
+      fill: #090714;
+    }
+  }
+  .header-row__button:nth-child(n+5):nth-child(-n+7).active ~ .header-row__select .header-row__select-current {
+    background-color: #754BE9;
+    color: white;
+    path {
+      fill: white;
+    }
+  }
 }
 
 
@@ -1136,6 +1107,13 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
   .header-row__select a:nth-child(3) {
     display: flex;
   }
+  .header-row__button:nth-child(n+3):nth-child(-n+4).active ~ .header-row__select .header-row__select-current {
+    background-color: #754BE9;
+    color: white;
+    path {
+      fill: white;
+    }
+  }
   .grid-kpi {
     min-width: auto;
     .grid-header, .accordion {
@@ -1158,6 +1136,16 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
     &::before {
       content: attr(data-active);
     }
+  }
+  .header-row__button:nth-child(n+1):nth-child(-n+2).active ~ .header-row__select .header-row__select-current {
+    background-color: #754BE9;
+    color: white;
+    path {
+      fill: white;
+    }
+  }
+  .header-row__select .header-row__button[data-disabled] {
+    display: none;
   }
 }
 
