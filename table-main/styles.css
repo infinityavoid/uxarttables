@@ -356,10 +356,6 @@ button {
   flex: 1;
 }
 
-.kpi-last {
-  color: #00B8A9;
-}
-
 .accordion-content__row.employee {
   background-color: #EFEFEF;
   .accordion-content__title {
@@ -397,10 +393,6 @@ button {
     cursor: auto;
     pointer-events: none;
   }
-}
-
-.accordion-cell.employee-end {
-  background-color: #DCDCDC;
 }
 
 .accordion-header__num {
@@ -700,14 +692,14 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
   }
 }
 
-::-webkit-scrollbar {
+.grid-container::-webkit-scrollbar {
   height: 12px;
   width: 12px;
   background-color: #F0F0F0;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+.grid-container::-webkit-scrollbar-thumb {
   background: #754BE9;
   border-radius: 10px;
 }
