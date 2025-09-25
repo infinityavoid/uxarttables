@@ -520,7 +520,7 @@ li.accordion-content__row.inner-level .accordion-content__title_main::before {
   .accordion-cell:not(.current):not(.closed) .accordion-cell.last {
     background-color: #EFEFEF;
   }
-  .accordion-cell.current:not(.closed) .accordion-cell.last {
+  .accordion-cell.current .accordion-cell.last {
     background-color: #EFEFEF;
   }
   .accordion-content {
@@ -702,7 +702,7 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
 
 ::-webkit-scrollbar {
   height: 12px;
-  width: 2px;
+  width: 12px;
   background-color: #F0F0F0;
   border-radius: 10px;
 }
