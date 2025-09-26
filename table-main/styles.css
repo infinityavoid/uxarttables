@@ -408,23 +408,10 @@ button {
   padding-right: 14px;
 }
 
-li.accordion-content__row:not(.inner-level) {
-  counter-increment: main-counter;
-}
-
-li.accordion-content__row:not(.inner-level) .accordion-content__title_main::before {
-  content: counter(main-counter) ". ";
-}
-
 li.accordion-content__row.inner-level {
-  counter-reset: inner-counter;
-  counter-increment: inner-counter;
   .accordion-content__title {
     padding-left: 32px;
   }
-}
-li.accordion-content__row.inner-level .accordion-content__title_main::before {
-  content: counter(main-counter) "." counter(inner-counter) ". ";
 }
 
 .accordion-content.highlighted {
