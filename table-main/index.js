@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded', ()=> {
+document.addEventListener('DOMContentLoaded', () => {
   const quaters = document.querySelectorAll('.grid-header__cell.resize')
 
-  quaters.forEach((el)=>{
-    el.addEventListener('click', ()=>{
+  quaters.forEach((el) => {
+    el.addEventListener('click', () => {
       parentEl = el.parentElement
       parentEl.classList.toggle('closed')
       const target = parentEl.dataset.quater
       const tableContent = document.querySelectorAll(`.accordion-cell[data-quater="${target}"]`)
-      tableContent.forEach((el)=>{
+      tableContent.forEach((el) => {
         el.classList.toggle('closed')
       })
     })
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
       if (!content.length) return;
 
-      content.forEach((el)=> {
+      content.forEach((el) => {
         if (container.classList.contains('open')) {
           el.style.height = el.scrollHeight + 'px';
           el.style.transform = 'translateY(0)';
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
       if (!content.length) return;
 
-      content.forEach((el)=> {
+      content.forEach((el) => {
         if (container.classList.contains('open')) {
           el.style.height = el.scrollHeight + 'px';
           el.style.transform = 'translateY(0)';
@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
   const initFilterSelect = () => {
     const select = document.querySelector('.header-row__select')
-    const currentSelect = document.querySelector('.header-row__select-current'); 
-    currentSelect.addEventListener('click', (e)=> {
+    const currentSelect = document.querySelector('.header-row__select-current');
+    currentSelect.addEventListener('click', (e) => {
       e.stopPropagation()
       select.classList.toggle('active')
     })
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const initMoreTab = () => {
     const moreTab = document.querySelector('.export-more')
     const moreTabIcon = document.querySelector('.export-more svg')
-    moreTabIcon?.addEventListener('click', (e)=> {
+    moreTabIcon?.addEventListener('click', (e) => {
       e.stopPropagation()
       moreTab.classList.toggle('active')
     })
@@ -155,26 +155,48 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
       moreTab?.classList.remove('active')
     });
-    
+
   }
 
   const initDetailPopup = () => {
     const popup = document.querySelector('.popup')
     const button = document.querySelector('.first-block__content-details')
     const closeButton = document.querySelector('.popup-close')
-    button?.addEventListener('click', ()=> {
+    button?.addEventListener('click', () => {
       popup.classList.add('active')
     })
-    closeButton?.addEventListener('click', ()=> {
+    closeButton?.addEventListener('click', () => {
       popup.classList.remove('active')
     })
-    popup?.addEventListener('click', (e)=> {
+    popup?.addEventListener('click', (e) => {
       const isInsideContainer = e.target.closest('.popup-content')
-      if(!isInsideContainer){
+      if (!isInsideContainer) {
         popup.classList.remove('active')
       }
     })
   }
+  const inputs = document.querySelectorAll('input.first-block__content-cell-content');
+  const output = document.querySelector('output.first-block__content-cell-content');
+
+  // Функция для расчета и вывода результата
+  function calculateAndOutput() {
+    const coefficient = parseFloat(inputs[0].value) || 0;
+    const salary = parseFloat(inputs[1].value) || 0;
+    const numberOfSalaries = parseFloat(inputs[2].value) || 0;
+
+    let result = coefficient * salary * numberOfSalaries;
+    if (result < 1) {
+      result = 0
+    }
+    output.textContent = result.toLocaleString('ru-RU'); // Форматируем число в строку с разделением разрядов
+  }
+
+  // Добавляем обработчики событий на поля ввода
+  inputs.forEach((el) => {
+    el.addEventListener('keydown', (evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault())
+    el.addEventListener('input', calculateAndOutput)
+  })
+  calculateAndOutput();
   initDetailPopup()
   initFilterSelect()
   initMoreTab()
