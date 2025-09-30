@@ -289,6 +289,7 @@ input.first-block__content-cell-content[type=number] {
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
+  color: #754BE9;
 }
 
 .second-block__main {
@@ -1145,6 +1146,12 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
   .header-row__select .header-row__button[data-disabled] {
     display: none;
   }
+  .export-button_text {
+    display: none;
+  }
+  .export-button.manager.my-cards {
+    order: 2
+  }
 }
 
 @media (max-width: 767px) {
@@ -1244,7 +1251,7 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
     display: none;
   }
   .header-row__actions {
-    gap: 10px;
+    gap: 20px;
   }
   .search-mobile {
     display: block;

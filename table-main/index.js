@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Функция для расчета и вывода результата
   function calculateAndOutput() {
+    if(!inputs.length) return
     const coefficient = parseFloat(inputs[0].value) || 0;
     const salary = parseFloat(inputs[1].value) || 0;
     const numberOfSalaries = parseFloat(inputs[2].value) || 0;
