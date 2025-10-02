@@ -527,6 +527,7 @@ li.accordion-content__row.inner-level {
   transition: .35s;
   svg {
     transition: .35s;
+    min-width: 20px;
   }
 }
 
@@ -534,7 +535,6 @@ li.accordion-content__row.inner-level {
   display: flex;
   align-items: center;
   z-index: 1000;
-  height: 42px;
 }
 
 .accordion-title {
@@ -545,17 +545,19 @@ li.accordion-content__row.inner-level {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px 0 16px;
+  padding: 10px 10px 10px 16px;
   position: sticky;
   left: 0;
   transition: .35s;
   overflow: hidden;
+  height: 42px;
+  min-height: fit-content;
 }
 
 .accordion-cell {
   display: flex;
   flex-direction: row;
-  height: inherit;
+  height: 100%;
   align-items: center;
   justify-content: center;
   transition: .35s;
@@ -628,11 +630,11 @@ li.accordion-content__row.inner-level {
   position: relative;
   transition: .35s;
   height: 63px;
+  min-height: fit-content;
 }
 
 .accordion-content__title {
   width: 434px;
-  gap: 4px;
   flex-direction: column;
   padding-left: 16px;
   display: flex;
@@ -645,6 +647,9 @@ li.accordion-content__row.inner-level {
   background-color: white;
   text-wrap: balance;
   padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-height: 63px;
 }
 
 a.accordion-content__title:hover, a.accordion-content__title:active {
@@ -663,8 +668,9 @@ a.accordion-content__title:hover, a.accordion-content__title:active {
   font-family: Suisse Intl;
   font-weight: 400;
   font-size: 14px;
-  line-height: 120%;
+  line-height: 111%;
   color: #9C9AA5;
+  margin-top: 4px;
 }
 
 .accordion-header__title {
