@@ -13,90 +13,41 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  const accordions = document.querySelectorAll('.accordion-title');
+const scrollToEmployee = () => {
+  const hash = location.hash.substring(1);
+  const accordionAnchor = document.querySelector(`.accordion-content[data-employee="${hash}"]`);
+  if (!accordionAnchor) return;
 
-  function setZIndexForAccordions() {
-    const accordionContainers = document.querySelectorAll('.accordion');
-    accordionContainers.forEach((container, index) => {
-      container.style.zIndex = accordionContainers.length - index;
-      const content = container.querySelectorAll('.accordion-content');
-
-      if (!content.length) return;
-
-      content.forEach((el) => {
-        if (container.classList.contains('open')) {
-          el.style.height = el.scrollHeight + 'px';
-          el.style.transform = 'translateY(0)';
-        } else {
-          el.style.height = '0px';
-          el.style.transform = `translateY(-${el.scrollHeight}px)`;
+  // Function to open all parent accordions
+  const openParents = (element) => {
+    let parent = element.parentElement;
+    while (parent) {
+      if (parent.classList?.contains('accordion')) {
+        if (!parent.classList.contains('open')) {
+          parent.classList.add('open');
+          updateHeight(parent); // use your existing updateHeight function
         }
-      })
-    });
-  }
-  const scrollToEmployee = () => {
-    const hash = location.hash.substring(1);
-    const accordionAnchor = document.querySelector(`.accordion-content[data-employee="${hash}"]`);
-
-    if (!accordionAnchor) {
-      return;
-    }
-
-    if (accordionAnchor.classList.contains('open')) {
-      return;
-    } else {
-      const accordionAnchorParent = accordionAnchor.parentElement;
-      accordionAnchorParent.classList.toggle('open');
-      if (accordionAnchorParent.classList.contains('open')) {
-        accordionAnchor.style.height = accordionAnchor.scrollHeight + 'px';
-        accordionAnchor.style.transform = 'translateY(0)';
-      } else {
-        accordionAnchor.style.height = '0px';
-        accordionAnchor.style.transform = `translateY(-${accordionAnchor.scrollHeight}px)`; // Используем шаблонную строку
       }
+      parent = parent.parentElement;
     }
-
-    accordionAnchor.scrollIntoView({ block: 'start', behavior: "smooth" });
-    accordionAnchor.classList.add('highlighted');
-
-    setTimeout(() => {
-      accordionAnchor.classList.remove('highlighted');
-    }, 700); // 1 секунда
   };
 
-  scrollToEmployee();
-  setZIndexForAccordions();
+  openParents(accordionAnchor);
 
-  accordions.forEach((el) => {
-    el.addEventListener('click', (event) => {
-      const container = event.target.closest('.accordion');
-      if (!container) return;
+  // Set the height and transform for the target content explicitly
+  accordionAnchor.style.height = accordionAnchor.scrollHeight + 'px';
+  accordionAnchor.style.transform = 'translateY(0)';
 
-      container.classList.toggle('open');
-      const content = container.querySelectorAll('.accordion-content');
+  accordionAnchor.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  accordionAnchor.classList.add('highlighted');
 
-      if (!content.length) return;
+  setTimeout(() => {
+    accordionAnchor.classList.remove('highlighted');
+  }, 700);
+};
 
-      content.forEach((el) => {
-        if (container.classList.contains('open')) {
-          el.style.height = el.scrollHeight + 'px';
-          el.style.transform = 'translateY(0)';
-        } else {
-          el.style.height = '0px';
-          el.style.transform = `translateY(-${el.scrollHeight}px)`;
-        }
-      })
-    });
-  });
+scrollToEmployee();
 
-  const initialClosedAccordions = document.querySelectorAll('.accordion:not(.open)');
-
-  initialClosedAccordions.forEach((el) => {
-    const content = el.querySelector('.accordion-content');
-    if (content) {
-      content.style.transform = `translateY(-${content.scrollHeight}px)`;
-    }
-  });
 
 
   const getCurrentQuaterAndScroll = () => {
@@ -180,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Функция для расчета и вывода результата
   function calculateAndOutput() {
-    if(!inputs.length) return
+    if (!inputs.length) return
     const coefficient = parseFloat(inputs[0].value) || 0;
     const salary = parseFloat(inputs[1].value) || 0;
     const numberOfSalaries = parseFloat(inputs[2].value) || 0;
@@ -197,6 +148,92 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('keydown', (evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault())
     el.addEventListener('input', calculateAndOutput)
   })
+
+  const TITLE_SELECTOR = '.accordion-title';
+
+  function getDirectContent(container) {
+    for (const ch of container.children) {
+      if (ch.classList?.contains('accordion-content')) return ch;
+    }
+    return null;
+  }
+
+  function getTitleHeight(container) {
+    const title = container.querySelector('.accordion-title');
+    return title ? title.offsetHeight : 0;
+  }
+
+  // Высчитываем видимую высоту содержимого + всегда учитываем шапочку каждого дочернего
+  function calculateVisibleContentHeight(container) {
+    const content = getDirectContent(container);
+    if (!content) return 0;
+
+    let height = 0;
+
+    for (const child of content.children) {
+      if (child.classList?.contains('accordion')) {
+        height += getTitleHeight(child); // учитываем шапку дочернего всегда
+        if (child.classList.contains('open')) {
+          height += calculateVisibleContentHeight(child);
+        }
+      } else {
+        height += child.offsetHeight;
+      }
+    }
+
+    return height;
+  }
+
+  function updateHeight(container) {
+    const content = getDirectContent(container);
+    if (!content) return;
+
+    if (container.classList.contains('open')) {
+      // Высота содержимого с учётом шапочек дочерних
+      const visibleContentHeight = calculateVisibleContentHeight(container);
+      content.style.height = visibleContentHeight + 'px';
+      content.style.transform = 'translateY(0)';
+    } else {
+      // При закрытии сдвигаем вверх на текущую высоту содержимого (чтобы скрыть плавно)
+      const offsetHeight = content.offsetHeight || 0;
+      content.style.height = '0px';
+      content.style.transform = `translateY(-${offsetHeight}px)`;
+    }
+  }
+
+  function updateAncestors(container) {
+    let parent = container.parentElement;
+    while (parent) {
+      if (parent.classList?.contains('accordion')) {
+        updateHeight(parent);
+      }
+      parent = parent.parentElement;
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const title = e.target.closest(TITLE_SELECTOR);
+    if (!title) return;
+
+    const container = title.closest('.accordion');
+    if (!container) return;
+
+    container.classList.toggle('open');
+    updateHeight(container);
+    updateAncestors(container);
+  });
+
+  // Инициализация
+  document.querySelectorAll('.accordion').forEach(updateHeight);
+
+  function setZIndexForAccordions() {
+    const accordionContainers = document.querySelectorAll('.accordion');
+    accordionContainers.forEach((container, index) => {
+      container.style.zIndex = accordionContainers.length - index;
+    });
+  }
+
+  setZIndexForAccordions();
   calculateAndOutput();
   initDetailPopup()
   initFilterSelect()
