@@ -592,6 +592,16 @@ li.accordion-content__row.inner-level {
   }
 }
 
+.accordion-header.functional {
+  .accordion-title {
+    background-color: #EFEFEF;
+  }
+
+  .accordion-cell {
+    background-color: #EFEFEF;
+  }
+}
+
 .accordion .accordion {
   .accordion-title {
     padding-left: 24px;
@@ -750,7 +760,7 @@ a.accordion-content__title:active {
   font-family: Suisse Intl;
   font-weight: 400;
   font-size: 14px;
-  line-height: 140%;
+  line-height: 19px;
   color: #464451;
 }
 
@@ -758,7 +768,7 @@ a.accordion-content__title:active {
   font-family: Suisse Intl;
   font-weight: 400;
   font-size: 14px;
-  line-height: 120%;
+  line-height: 17px;
   color: #9C9AA5;
   margin-top: 4px;
 }
