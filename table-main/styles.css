@@ -555,6 +555,7 @@ li.accordion-content__row.inner-level {
 
   .accordion-content {
     opacity: 1;
+    height: auto;
   }
 
   &>.accordion-header svg {
@@ -565,7 +566,6 @@ li.accordion-content__row.inner-level {
 .accordion {
   display: grid;
   transition: .35s;
-
   svg {
     transition: .35s;
     min-width: 20px;
@@ -574,6 +574,8 @@ li.accordion-content__row.inner-level {
 
 .accordion:not(.open) .accordion-content {
   pointer-events: none;
+  height: 0;
+  opacity: 0;
 }
 
 .accordion-header {
@@ -619,6 +621,25 @@ li.accordion-content__row.inner-level {
 
   .accordion-content__row.inner-level .accordion-content__title {
     padding-left: 40px;
+  }
+}
+
+.accordion .accordion .accordion .accordion {
+  .accordion-title {
+    padding-left: 40px;
+  }
+
+  .accordion-content__row.inner-level .accordion-content__title {
+    padding-left: 48px;
+  }
+}
+.accordion .accordion .accordion .accordion .accordion {
+  .accordion-title {
+    padding-left: 48px;
+  }
+
+  .accordion-content__row.inner-level .accordion-content__title {
+    padding-left: 56px;
   }
 }
 
@@ -717,6 +738,7 @@ li.accordion-content__row.inner-level {
   transition: .35s;
   opacity: 0;
   scroll-margin-top: 118px;
+  overflow-y: clip;
 }
 
 .accordion-content__sub {

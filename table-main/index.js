@@ -13,40 +13,35 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-const scrollToEmployee = () => {
-  const hash = location.hash.substring(1);
-  const accordionAnchor = document.querySelector(`.accordion-content[data-employee="${hash}"]`);
-  if (!accordionAnchor) return;
+  const scrollToEmployee = () => {
+    const hash = location.hash.substring(1);
+    const accordionAnchor = document.querySelector(`.accordion-content[data-employee="${hash}"]`);
+    if (!accordionAnchor) return;
 
-  // Function to open all parent accordions
-  const openParents = (element) => {
-    let parent = element.parentElement;
-    while (parent) {
-      if (parent.classList?.contains('accordion')) {
-        if (!parent.classList.contains('open')) {
-          parent.classList.add('open');
-          updateHeight(parent); // use your existing updateHeight function
+    // Function to open all parent accordions
+    const openParents = (element) => {
+      let parent = element.parentElement;
+      while (parent) {
+        if (parent.classList?.contains('accordion')) {
+          if (!parent.classList.contains('open')) {
+            parent.classList.add('open');
+          }
         }
+        parent = parent.parentElement;
       }
-      parent = parent.parentElement;
-    }
+    };
+
+    openParents(accordionAnchor);
+
+    accordionAnchor.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    accordionAnchor.classList.add('highlighted');
+
+    setTimeout(() => {
+      accordionAnchor.classList.remove('highlighted');
+    }, 700);
   };
 
-  openParents(accordionAnchor);
-
-  // Set the height and transform for the target content explicitly
-  accordionAnchor.style.height = accordionAnchor.scrollHeight + 'px';
-  accordionAnchor.style.transform = 'translateY(0)';
-
-  accordionAnchor.scrollIntoView({ block: 'start', behavior: 'smooth' });
-  accordionAnchor.classList.add('highlighted');
-
-  setTimeout(() => {
-    accordionAnchor.classList.remove('highlighted');
-  }, 700);
-};
-
-scrollToEmployee();
+  scrollToEmployee();
 
 
 
@@ -149,91 +144,12 @@ scrollToEmployee();
     el.addEventListener('input', calculateAndOutput)
   })
 
-  const TITLE_SELECTOR = '.accordion-title';
-
-  function getDirectContent(container) {
-    for (const ch of container.children) {
-      if (ch.classList?.contains('accordion-content')) return ch;
-    }
-    return null;
-  }
-
-  function getTitleHeight(container) {
-    const title = container.querySelector('.accordion-title');
-    return title ? title.offsetHeight : 0;
-  }
-
-  // Высчитываем видимую высоту содержимого + всегда учитываем шапочку каждого дочернего
-  function calculateVisibleContentHeight(container) {
-    const content = getDirectContent(container);
-    if (!content) return 0;
-
-    let height = 0;
-
-    for (const child of content.children) {
-      if (child.classList?.contains('accordion')) {
-        height += getTitleHeight(child); // учитываем шапку дочернего всегда
-        if (child.classList.contains('open')) {
-          height += calculateVisibleContentHeight(child);
-        }
-      } else {
-        height += child.offsetHeight;
-      }
-    }
-
-    return height;
-  }
-
-  function updateHeight(container) {
-    const content = getDirectContent(container);
-    if (!content) return;
-
-    if (container.classList.contains('open')) {
-      // Высота содержимого с учётом шапочек дочерних
-      const visibleContentHeight = calculateVisibleContentHeight(container);
-      content.style.height = visibleContentHeight + 'px';
-      content.style.transform = 'translateY(0)';
-    } else {
-      // При закрытии сдвигаем вверх на текущую высоту содержимого (чтобы скрыть плавно)
-      const offsetHeight = content.offsetHeight || 0;
-      content.style.height = '0px';
-      content.style.transform = `translateY(-${offsetHeight}px)`;
-    }
-  }
-
-  function updateAncestors(container) {
-    let parent = container.parentElement;
-    while (parent) {
-      if (parent.classList?.contains('accordion')) {
-        updateHeight(parent);
-      }
-      parent = parent.parentElement;
-    }
-  }
-
-  document.addEventListener('click', e => {
-    const title = e.target.closest(TITLE_SELECTOR);
-    if (!title) return;
-
-    const container = title.closest('.accordion');
-    if (!container) return;
-
-    container.classList.toggle('open');
-    updateHeight(container);
-    updateAncestors(container);
-  });
-
-  // Инициализация
-  document.querySelectorAll('.accordion').forEach(updateHeight);
-
-  function setZIndexForAccordions() {
-    const accordionContainers = document.querySelectorAll('.accordion');
-    accordionContainers.forEach((container, index) => {
-      container.style.zIndex = accordionContainers.length - index;
-    });
-  }
-
-  setZIndexForAccordions();
+  const accordions =  document.querySelectorAll('.accordion-title');
+  accordions.forEach((el)=> {
+    el.addEventListener('click', ()=>{
+      el.closest('.accordion').classList.toggle('open')
+    })
+  })
   calculateAndOutput();
   initDetailPopup()
   initFilterSelect()
