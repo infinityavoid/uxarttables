@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./lib/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 
@@ -71,6 +72,12 @@
           </svg>
         </button>
       </div>
+    </section>
+    <section class="year-block block">
+      <a href="" class="header-row__button">2022</a>
+      <a href="" class="header-row__button">2023</a>
+      <a href="" class="header-row__button">2024</a>
+      <a href="" class="header-row__button active">2025</a>
     </section>
     <section class="first-block block">
       <div class="first-block__container">
@@ -142,8 +149,51 @@
       </div>
     </section>
     <section class="second-block block">
+      <div class="grid-quater-selector swiper">
+        <div class="swiper-wrapper">
+          <label class="grid-quater-checkbox swiper-slide" data-target-quater="1">
+            <input type="checkbox" checked>
+            <span class="grid-quater-checkbox__checkmark">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M11.6693 3.49997L5.2526 9.91664L2.33594 6.99997" stroke="white" stroke-width="1.16667"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Первый квартал
+          </label>
+          <label class="grid-quater-checkbox swiper-slide" data-target-quater="2">
+            <input type="checkbox" checked>
+            <span class="grid-quater-checkbox__checkmark">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M11.6693 3.49997L5.2526 9.91664L2.33594 6.99997" stroke="white" stroke-width="1.16667"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Второй квартал
+          </label>
+          <label class="grid-quater-checkbox swiper-slide" data-target-quater="3">
+            <input type="checkbox" checked>
+            <span class="grid-quater-checkbox__checkmark">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M11.6693 3.49997L5.2526 9.91664L2.33594 6.99997" stroke="white" stroke-width="1.16667"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Третий квартал
+          </label>
+          <label class="grid-quater-checkbox swiper-slide" data-target-quater="4">
+            <input type="checkbox" checked>
+            <span class="grid-quater-checkbox__checkmark">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M11.6693 3.49997L5.2526 9.91664L2.33594 6.99997" stroke="white" stroke-width="1.16667"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            Четвертый квартал
+          </label>
+        </div>
+      </div>
       <div class="grid-container">
-        <!-- Headers -->
         <div class="grid-header">
           <div class="grid-header__cell first grid-border">
             <p class="grid-header__cell-text">Сотрудники</p>
@@ -151,10 +201,6 @@
           <div class="grid-header__cell" data-quater="1">
             <div class="grid-header__cell resize grid-border">
               <p class="grid-header__cell-text">1 кв. 2025</p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 12L10 8L6 4" stroke="#9C9AA5" stroke-width="1.3" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
             </div>
             <div class="grid-header__cell report-kpi">
               <div class="grid-header__cell sub report-kpi">
@@ -188,10 +234,6 @@
           <div class="grid-header__cell current" data-quater="2">
             <div class="grid-header__cell resize grid-border">
               <p class="grid-header__cell-text">2 кв. 2025</p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 12L10 8L6 4" stroke="#9C9AA5" stroke-width="1.3" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
             </div>
             <div class="grid-header__cell report-kpi">
               <div class="grid-header__cell sub report-kpi">
@@ -225,10 +267,6 @@
           <div class="grid-header__cell" data-quater="3">
             <div class="grid-header__cell resize grid-border">
               <p class="grid-header__cell-text">3 кв. 2025</p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 12L10 8L6 4" stroke="#9C9AA5" stroke-width="1.3" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
             </div>
             <div class="grid-header__cell report-kpi">
               <div class="grid-header__cell sub report-kpi">
@@ -262,10 +300,6 @@
           <div class="grid-header__cell" data-quater="4">
             <div class="grid-header__cell resize grid-border">
               <p class="grid-header__cell-text">4 кв. 2025</p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 12L10 8L6 4" stroke="#9C9AA5" stroke-width="1.3" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
             </div>
             <div class="grid-header__cell report-kpi">
               <div class="grid-header__cell sub report-kpi">
@@ -3320,6 +3354,7 @@
     </div>
   </main>
   <script src="index.js"></script>
+  <script src="./lib/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>

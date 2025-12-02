@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const quaters = document.querySelectorAll('.grid-header__cell.resize')
+  const quaters = document.querySelectorAll('.grid-quater-checkbox')
 
   quaters.forEach((el) => {
-    el.addEventListener('click', () => {
-      parentEl = el.parentElement
-      parentEl.classList.toggle('closed')
-      const target = parentEl.dataset.quater
+    el.addEventListener('change', () => {
+      const target = el.dataset.targetQuater
+      const targetHeaderCell = document.querySelector(`.grid-header__cell[data-quater="${target}"]`)
+      targetHeaderCell.classList.toggle('closed')
       const tableContent = document.querySelectorAll(`.accordion-cell[data-quater="${target}"]`)
       tableContent.forEach((el) => {
         el.classList.toggle('closed')
       })
+      setTimeout(() => {
+        getCurrentQuaterAndScroll(targetHeaderCell)
+      }, 300);
     })
   })
 
@@ -45,19 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  const getCurrentQuaterAndScroll = () => {
+  const getCurrentQuaterAndScroll = (quater) => {
     const gridContainer = document.querySelector('.grid-container');
-    const targetElement = document.querySelector('.grid-header__cell.current');
+    const targetElement = quater ? quater : document.querySelector('.grid-header__cell.current');
     const colStart = document.querySelector('.grid-header__cell.first')
-    const secondBlock = document.querySelector('.second-block')
-    const secondBlockStyles = window.getComputedStyle(secondBlock)
-    const gridContainerStyles = window.getComputedStyle(gridContainer)
-    const gridMarginLeft = gridContainerStyles.getPropertyValue('margin-left')
-    const marginLeft = secondBlockStyles.getPropertyValue('margin-left');
-    const paddingLeft = secondBlockStyles.getPropertyValue('padding-left');
-    if (gridContainer && targetElement) {
+    if (colStart && targetElement && gridContainer) {
       gridContainer.scrollTo({
-        left: targetElement.offsetLeft - colStart.offsetWidth - parseInt(paddingLeft) - parseInt(marginLeft) - (window.innerWidth <= 767 ? parseInt(gridMarginLeft) : 0),
+        left: targetElement.offsetLeft - colStart.offsetWidth,
         behavior: 'smooth'
       });
     }
@@ -144,12 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('input', calculateAndOutput)
   })
 
-  const accordions =  document.querySelectorAll('.accordion-title');
-  accordions.forEach((el)=> {
-    el.addEventListener('click', ()=>{
+  const accordions = document.querySelectorAll('.accordion-title');
+  accordions.forEach((el) => {
+    el.addEventListener('click', () => {
       el.closest('.accordion').classList.toggle('open')
     })
   })
+
+  new Swiper('.grid-quater-selector', {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+  });
   calculateAndOutput();
   initDetailPopup()
   initFilterSelect()
